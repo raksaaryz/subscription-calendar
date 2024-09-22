@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Subscription Tracker Calendar</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <!-- Month and Year -->
+    <h1 id="monthAndYear"></h1>
+    <!-- Total Monthly Spend -->
+    <div class="total-cost">
+      <div class="monthly-spend-label">Monthly Spend</div>
+      <div class="monthly-spend-amount">Rp <span id="totalCost">0</span></div>
+    </div>
+  </header>
+
+  <!-- Navigation Arrows -->
+  <button id="prevMonth" class="nav-arrow left-arrow">&#8249;</button>
+  <button id="nextMonth" class="nav-arrow right-arrow">&#8250;</button>
+
+  <!-- Clear Data Button -->
+  <div class="clear-data-container">
+    <button id="clearDataButton">Clear All Data</button>
+  </div>
+
+  <!-- Calendar Container -->
+  <div class="calendar-container">
+    <!-- Day Labels -->
+    <div class="day-names">
+      <div>Sun</div>
+      <div>Mon</div>
+      <div>Tue</div>
+      <div>Wed</div>
+      <div>Thu</div>
+      <div>Fri</div>
+      <div>Sat</div>
+    </div>
+
+    <!-- Calendar Grid -->
+    <div class="calendar" id="calendar"></div>
+  </div>
+
+  <!-- Subscription Modal (for adding/editing subscriptions) -->
+  <div id="subscriptionModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button" id="closeModal">&times;</span>
+      <h2>Subscriptions on <span id="modalDate"></span></h2>
+
+      <!-- Existing Subscriptions List -->
+      <div id="subscriptionsList">
+        <!-- Existing subscriptions will be populated here -->
+      </div>
+
+      <!-- Add or Edit Subscription -->
+      <h3 id="formTitle">Add Subscription</h3>
+      <form id="subscriptionForm">
+        <label for="subscriptionName">Subscription Name:</label>
+        <select id="subscriptionName" name="subscriptionName" required>
+          <option value="">--Select Subscription--</option>
+          <option value="Spotify">Spotify</option>
+          <option value="Netflix">Netflix</option>
+          <option value="Apple One">Apple One</option>
+          <option value="ChatGPT Plus">ChatGPT Plus</option>
+          <option value="Figma">Figma</option>
+          <option value="X Premium">X Premium</option>
+          <option value="Youtube Premium">Youtube Premium</option>
+          <option value="Canva">Canva</option>
+          <option value="Google One">Google One</option>
+          <option value="Else">Else</option>
+        </select>
+
+        <div id="customSubscriptionNameContainer" style="display: none;">
+          <label for="customSubscriptionName">Custom Subscription Name:</label>
+          <input type="text" id="customSubscriptionName" name="customSubscriptionName">
+        </div>
+
+        <label for="subscriptionCost">Cost (Rp):</label>
+        <input type="number" id="subscriptionCost" name="subscriptionCost" step="1000" required>
+
+        <!-- Start Date Field -->
+        <label for="subscriptionStartDate">Start Date:</label>
+        <input type="date" id="subscriptionStartDate" name="subscriptionStartDate" required>
+
+        <input type="hidden" id="subscriptionDate" name="subscriptionDate">
+        <input type="hidden" id="editSubscriptionName" name="editSubscriptionName">
+        <button type="submit" id="formSubmitButton">Add Subscription</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Hover Tooltip -->
+  <div id="hoverTooltip" class="tooltip">
+    <!-- Tooltip content will be populated dynamically -->
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 by <a href="https://x.com/lucaxyzz" target="_blank">@lucaxyzz</a> 🚀</p>
+  </footer>
+
+  <!-- JavaScript File -->
+  <script src="script.js"></script>
+</body>
+</html>

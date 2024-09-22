@@ -1,0 +1,432 @@
+/* General Styles */
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #121212;
+  color: #ffffff;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: #1f1f1f;
+  padding: 10px 20px;
+  color: #ffffff;
+  border-bottom: 1px solid #2a2a2a;
+  position: relative;
+}
+
+header h1 {
+  flex: 1;
+  text-align: center;
+  margin: 0;
+  font-size: 1.5em;
+}
+
+.total-cost {
+  flex: 1;
+  text-align: center;
+}
+
+.monthly-spend-label {
+  font-size: 0.9em;
+  color: #bbbbbb;
+}
+
+.monthly-spend-amount {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+/* Navigation Arrows */
+.nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(51, 51, 51, 0.8);
+  border: none;
+  color: #ffffff;
+  padding: 15px;
+  cursor: pointer;
+  font-size: 2em;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.nav-arrow:hover {
+  background-color: rgba(80, 80, 80, 0.8);
+}
+
+.left-arrow {
+  left: 10px;
+}
+
+.right-arrow {
+  right: 10px;
+}
+
+/* Smooth Transition */
+.calendar {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.calendar.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Clear Data Button */
+.clear-data-container {
+  text-align: center;
+  padding: 10px 20px;
+}
+
+#clearDataButton {
+  background-color: #ff4d4d;
+  border: none;
+  color: #ffffff;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 0.9em;
+  border-radius: 5px;
+}
+
+#clearDataButton:hover {
+  background-color: #ff1a1a;
+}
+
+/* Calendar Container */
+.calendar-container {
+  max-width: 1000px;
+  margin: 0 auto 20px;
+  padding: 0 20px;
+}
+
+.day-names {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.day-names div {
+  padding: 5px 0;
+  background-color: #1e1e1e;
+  border-radius: 5px;
+}
+
+/* Calendar Grid */
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+}
+
+.day {
+  position: relative;
+  border: none;
+  padding: 5px;
+  min-height: 100px;
+  background-color: #1e1e1e;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  transition: all 0.2s ease-in-out;
+}
+
+.day:hover {
+  background-color: #333333;
+  transform: scale(1.02);
+}
+
+.date-number {
+  font-weight: bold;
+  color: #ffffff;
+  font-size: 0.9em;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+
+.blank {
+  background-color: transparent;
+  box-shadow: none;
+  cursor: default;
+}
+
+/* Subscription Logo */
+.subscription-logo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.subscription-logo img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  margin: 2px;
+}
+
+.subscription-logo span {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 2px;
+}
+
+/* Tooltip Styles */
+.tooltip {
+  display: none;
+  position: absolute;
+  z-index: 20;
+  background-color: #1e1e1e;
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 10px;
+  width: 250px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+.tooltip::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -10px;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent #1e1e1e transparent transparent;
+}
+
+/* Tooltip Sections */
+.tooltip .hover-section {
+  margin-bottom: 10px;
+}
+
+.tooltip .hover-section:last-child {
+  margin-bottom: 0;
+}
+
+.tooltip .hover-section img {
+  width: 30px;
+  height: 30px;
+  margin-bottom: 5px;
+}
+
+.tooltip .hover-section div {
+  font-size: 0.9em;
+  line-height: 1.2;
+}
+
+/* Highlight the current date */
+.today {
+  background-color: #FFD700;
+  color: #000000;
+}
+
+.today:hover {
+  background-color: #FFC107;
+}
+
+.today .date-number {
+  color: #000000;
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.8);
+}
+
+.modal-content {
+  background-color: #1e1e1e;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  max-width: 400px;
+  position: relative;
+  border-radius: 5px;
+  color: #ffffff;
+}
+
+.close-button {
+  color: #ffffff;
+  float: right;
+  font-size: 20px;
+  font-weight: bold;
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: #bbbbbb;
+}
+
+#subscriptionsList {
+  margin-top: 15px;
+}
+
+.subscription-item-modal {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #2d2d2d;
+  padding: 5px 8px;
+  margin-bottom: 5px;
+  border-radius: 3px;
+}
+
+.subscription-item-modal img {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+
+.subscription-item-modal .subscription-details {
+  flex-grow: 1;
+  margin-left: 5px;
+}
+
+.subscription-item-modal .subscription-actions button {
+  background: none;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 0.9em;
+  margin-left: 5px;
+}
+
+.subscription-item-modal .subscription-actions button:hover {
+  color: #ffcc00;
+}
+
+#subscriptionForm h3 {
+  margin-top: 20px;
+}
+
+#subscriptionForm label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #ffffff;
+  font-size: 0.9em;
+}
+
+#subscriptionForm input,
+#subscriptionForm select {
+  width: 100%;
+  padding: 6px;
+  box-sizing: border-box;
+  margin-top: 3px;
+  font-size: 0.9em;
+  background-color: #2a2a2a;
+  border: 1px solid #444444;
+  color: #ffffff;
+  border-radius: 3px;
+}
+
+#subscriptionForm button {
+  margin-top: 15px;
+  padding: 8px 10px;
+  background-color: #3a3a3a;
+  border: none;
+  color: #ffffff;
+  font-size: 0.9em;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+#subscriptionForm button:hover {
+  background-color: #505050;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .calendar,
+  .day-names {
+    grid-template-columns: repeat(7, 1fr);
+  }
+
+  .tooltip {
+    width: 200px;
+  }
+}
+
+@media (max-width: 500px) {
+  .calendar,
+  .day-names {
+    grid-template-columns: repeat(7, 1fr);
+  }
+
+  header h1 {
+    font-size: 1.2em;
+  }
+
+  .tooltip {
+    width: 150px;
+  }
+
+  .nav-arrow {
+    padding: 10px;
+    font-size: 1.5em;
+  }
+
+  .day {
+    min-height: 80px;
+  }
+
+  .subscription-logo img,
+  .subscription-logo span {
+    width: 60%;
+  }
+}
+
+/* Footer Styles */
+footer {
+  background-color: #1f1f1f;
+  text-align: center;
+  padding: 20px;
+  border-top: 1px solid #2a2a2a;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+
+footer p {
+  margin: 0;
+  font-size: 0.9em;
+  color: #bbbbbb;
+}
+
+footer a {
+  color: #ffcc00;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
