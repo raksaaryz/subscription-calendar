@@ -21,6 +21,51 @@ const editSubscriptionNameInput = document.getElementById('editSubscriptionName'
 const clearDataButton = document.getElementById('clearDataButton');
 const hoverTooltip = document.getElementById('hoverTooltip');
 
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCDubIfK1wRtVJ5fmFgrtUP0OPmDVyw2T8",
+  authDomain: "calendar-subscribe-67a47.firebaseapp.com",
+  projectId: "calendar-subscribe-67a47",
+  storageBucket: "calendar-subscribe-67a47.firebasestorage.app",
+  messagingSenderId: "747231568529",
+  appId: "1:747231568529:web:4574700db44335be4bd530",
+  measurementId: "G-B15XCP482J"
+};
+
+// Initialize Firebase
+const app = firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const provider = new firebase.auth.GoogleAuthProvider();
+
+// Login with Google
+document.getElementById("login-button").addEventListener("click", async () => {
+  alert("klik");
+  try {
+    const result = await firebase.auth().signInWithPopup(provider);
+    const user = result.user;
+
+    // Display user info
+    document.getElementById("user-info").innerHTML = `
+      <p>Welcome, ${user.displayName}</p>
+      <p>Email: ${user.email}</p>
+      <img src="${user.photoURL}" alt="User Photo" style="width: 100px; height: 100px;">
+    `;
+
+    // Save user data to Firestore
+    const db = firebase.firestore();
+    await db.collection("users").doc(user.uid).set({
+      name: user.displayName,
+      email: user.email,
+      photoURL: user.photoURL,
+      uid: user.uid,
+    });
+    console.log("User data saved.");
+  } catch (error) {
+    console.error("Login Error:", error);
+  }
+});
+
+
 let totalCost = 0;
 let subscriptions = []; // Array of subscription objects
 
